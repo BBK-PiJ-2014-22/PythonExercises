@@ -44,3 +44,7 @@ Temporary Items
 .apdisk
 .metadata
 .recommenders
+
+#Python cache files
+__pycache__
+*.pyc
