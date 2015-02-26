@@ -1,10 +1,10 @@
-from word_recursion import Word
+import wordanalyse_recursion as analyser
 import time
+import csv
 
 def testCharCount(word, character, result):
-    word = Word(word)
-    count = word.charCount(character)
-    message = "Testing "+word.value+" with "+character+": " 
+    count = analyser.charCount(word, character)
+    message = "Testing "+word+" with "+character+": " 
 
     if count == result:
         return message+"Passed"
@@ -13,9 +13,8 @@ def testCharCount(word, character, result):
         return message
 
 def testPalindrome(word, result):
-    word = Word(word)
-    message = "Testing "+word.value+" as palindrome: "
-    response = word.isPalindrome()
+    message = "Testing "+word+" as palindrome: "
+    response = analyser.isPalindrome(word)
 
     if response == result:
         return message + "Passed"
@@ -23,23 +22,57 @@ def testPalindrome(word, result):
         message += "Failed. Expected: "+str(result) +" Actual:"+str(response)
         return message
 
+def performanceTest(testdata):
+    letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m",
+               "n","o","p","q","r","s","t","u","v","w","x","y","z"]
+
+    start = time.time()
+    for i in testdata:
+        for l in letters:
+            analyser.charCount(i, l)
+    end = time.time()
+
+    charcounttime = end-start
+
+    start = time.time()
+    for i in testdata:
+        for n in range(30):
+            analyser.isPalindrome(i)
+    end = time.time()
+
+    palindrometime = end-start
+
+    return "charCount", charcounttime*1000, "isPalindrome", palindrometime*1000,"Total:",(charcounttime+palindrometime)*1000
+    
+def loadTestData(filename):
+    with open(filename, 'r', newline = '', encoding='utf8') as testdatafile:
+        reader = csv.reader(testdatafile,delimiter=',')
+        testdata =  [row[0] for row in reader]
+        return testdata
         
+        
+
+testdata = loadTestData('testdata.csv')    
+
+print(testdata)
+            
 #CharCount tests
 
-start = time.time()
+
 
 print("***Char Count Tests***")
 print(testCharCount("apple", "a", 1))
 print(testCharCount("apple", "p", 2))
 print(testCharCount("apple", "d", 0))
 print(testCharCount("apple", "A", 1))
-print(testCharCount("apple", "pp", 0))
+print(testCharCount("apple", "pp", 1))
 print(testCharCount("apple", "", 0))
 print(testCharCount("apple", "e", 1))
-print(testCharCount("apple", "apple", 0))
+print(testCharCount("apple", "apple", 1))
 print(testCharCount("aaaaa", "a", 5))
 print(testCharCount("", "a", 0))
 
+start = time.time()
 end = time.time()
 duration1 = end - start
 
@@ -56,18 +89,10 @@ print(testPalindrome("Racecar", True))
 print(testPalindrome("denned",  True))
 print(testPalindrome("notapal", False))
 print(testPalindrome("race car",False))
-print(testPalindrome("",        True))
-end = time.time()
-duration2 = end - start
+print(testPalindrome("",        False))
+
 
 #Time
 print()
 print("***Time***")
-print("Char Count:", duration1)
-print("Palindrome:", duration2)
-print("Total time:", duration1+duration2)
-
-
-
-
-
+print(performanceTest(testdata))

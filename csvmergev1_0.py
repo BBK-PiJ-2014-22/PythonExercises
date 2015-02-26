@@ -1,3 +1,4 @@
+
 import csv
 import os
 import shutil
@@ -5,6 +6,7 @@ import shutil
 
 #Assign the headings
 def getHeaders(directory, file, result="headers.csv"):
+    '''Takes a CSV file and creates a new file with the same headers'''
     filepath = directory + '\\' + file
     newfilepath = directory  + '\\'+result
 
