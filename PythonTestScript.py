@@ -1,4 +1,4 @@
-import wordanalyse_recursion as analyser
+import wordanalyseg2_recursive as analyser
 import time
 import csv
 
@@ -53,9 +53,7 @@ def loadTestData(filename):
         
 
 testdata = loadTestData('testdata.csv')    
-
-print(testdata)
-            
+       
 #CharCount tests
 
 
@@ -65,22 +63,16 @@ print(testCharCount("apple", "a", 1))
 print(testCharCount("apple", "p", 2))
 print(testCharCount("apple", "d", 0))
 print(testCharCount("apple", "A", 1))
-print(testCharCount("apple", "pp", 1))
+print(testCharCount("apple", "pp", 0))
 print(testCharCount("apple", "", 0))
 print(testCharCount("apple", "e", 1))
-print(testCharCount("apple", "apple", 1))
+print(testCharCount("apple", "apple", 0))
 print(testCharCount("aaaaa", "a", 5))
 print(testCharCount("", "a", 0))
 
-start = time.time()
-end = time.time()
-duration1 = end - start
-
-print()
 
 
 #Palindrome Tests
-start = time.time()
 print("***Palindrome Tests***")
 print(testPalindrome("a",       True))
 print(testPalindrome("aaa",     True))
@@ -89,7 +81,7 @@ print(testPalindrome("Racecar", True))
 print(testPalindrome("denned",  True))
 print(testPalindrome("notapal", False))
 print(testPalindrome("race car",False))
-print(testPalindrome("",        False))
+print(testPalindrome("",        True))
 
 
 #Time
