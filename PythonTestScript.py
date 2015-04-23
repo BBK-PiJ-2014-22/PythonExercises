@@ -1,4 +1,4 @@
-import wordanalyseg2_recursive as analyser
+import group3 as analyser
 import time
 import csv
 
