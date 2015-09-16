@@ -6,3 +6,5 @@ def factorial(n):
     else:
         return factorial(n-1)*n
 
+for i in range(20000):
+    print(factorial(i))

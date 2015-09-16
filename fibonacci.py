@@ -6,5 +6,5 @@ def fibonacci(n):
     else:
         return fibonacci(n-1)+fibonacci(n-2)
 
-for i in range(200):
+for i in range(2000):
     print(fibonacci(i))
