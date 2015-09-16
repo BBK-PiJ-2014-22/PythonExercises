@@ -1,3 +1,4 @@
+#JM - most classes did not do the Dancer exercise due to time constraints
 class Dancer:
     '''Put in tdocstring here'''
 
@@ -22,6 +23,7 @@ class Dancer:
         else:
             print(self.name,"dances with", self.partner.name)
 
+#These are the iterative solutions
 def charCount(string, letter):
     string = string.lower()
     letter = letter.lower()

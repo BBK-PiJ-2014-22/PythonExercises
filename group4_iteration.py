@@ -14,7 +14,3 @@ def isPalindrome(word):
         if word[i] != word[-1-i]:
             return False
     return True
-        
-
-
-print(charCount("thing","t"))

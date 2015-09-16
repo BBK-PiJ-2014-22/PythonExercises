@@ -1,3 +1,8 @@
+#This was an early version of the last exercise
+#The original exercises used a Word custom object that held a vale
+#The functions written were then methods on the word. This proved
+#far more cumbersome, so I dropped it in favour of functions
+
 class Word:
 
     def __init__(self, string):

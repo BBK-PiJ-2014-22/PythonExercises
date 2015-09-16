@@ -3,6 +3,5 @@ def removeElement(oldList, remove):
         if oldList[i] == remove:
             oldList.pop(i)
             return True
-
     return False
 
